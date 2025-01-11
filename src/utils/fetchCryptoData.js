@@ -23,6 +23,12 @@ const fetchCryptoData = async () => {
                     price_usd: values.usd,
                     market_cap_usd: values.usd_market_cap,
                     change_24h_usd: values.usd_24h_change.toFixed(1),
+                    $push: {
+                      priceHistory: {
+                        $each: [{ price: values.usd, timestamp: new Date() }],
+                        $slice: -100,
+                      },
+                    },
                     last_updated: new Date(),
                   },
                   { upsert: true }
