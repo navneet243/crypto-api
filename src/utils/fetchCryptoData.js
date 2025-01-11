@@ -22,7 +22,7 @@ const fetchCryptoData = async () => {
                     name: symbol.charAt(0).toUpperCase() + symbol.slice(1),
                     price_usd: values.usd,
                     market_cap_usd: values.usd_market_cap,
-                    change_24h_usd: values.usd_24h_change,
+                    change_24h_usd: values.usd_24h_change.toFixed(1),
                     last_updated: new Date(),
                   },
                   { upsert: true }
